@@ -17,6 +17,7 @@ def lambda_handler(event, context):
         'i-0bbe7527407062453'
         ])
     logger.info(response)
+    # i-0b774eaa8e8a77c56 is the working instance now
     # i-0bbe7527407062453 is the ec2 instance id
     time.sleep(60) # In order to make sure that the instance is running before giving commands
     s3_client = boto3.client('s3')
@@ -30,6 +31,7 @@ def lambda_handler(event, context):
     commands = ["wget -N https://s3-eu-west-1.amazonaws.com/thulasi-ram-dum/raw_material_final_11.py",
                   "python36 raw_material_final_11.py"]
     # List of commands to run on ubuntu server
+    #
     for command in commands:
         ssh.exec_command(command)
         
